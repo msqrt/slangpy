@@ -193,6 +193,10 @@ SGL_PY_EXPORT(ui_widgets)
         .def(nb::init<Widget*, std::string_view>(), "parent"_a.none(), "text"_a = "", D(Text, Text))
         .def_prop_rw("text", &Text::text, &Text::set_text, D(Text, text));
 
+    nb::class_<Image, Widget>(ui, "Image")
+        .def(nb::init<Widget*, sgl::Texture*>(), "parent"_a.none, "texture"_a, D(Image, Image))
+        .def_prop_rw("texture", &Image::texture, &Image::set_texture, D(Image, texture));
+
     nb::class_<ProgressBar, Widget>(ui, "ProgressBar", D(ProgressBar))
         .def(nb::init<Widget*, float>(), "parent"_a.none(), "fraction"_a = 0.f, D(ProgressBar, ProgressBar))
         .def_prop_rw("fraction", &ProgressBar::fraction, &ProgressBar::set_fraction, D(ProgressBar, fraction));
