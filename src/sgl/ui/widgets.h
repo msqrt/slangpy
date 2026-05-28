@@ -281,7 +281,10 @@ public:
         ScopedID id(this);
         ScopedDisable disable(!m_enabled);
 
-        ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
+        if (m_texture)
+            ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
+        else:
+            ImGui::Text("[Empty image]");
     }
 
 private:
