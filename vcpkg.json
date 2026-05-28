@@ -3,10 +3,7 @@
     "version-string": "0.41.0",
     "dependencies": [
         "libjpeg-turbo",
-        {
-          "name": "libpng",
-          "version>=":"1.6.30#0"
-        },
+        "libpng",
         "openexr",
         "asmjit",
         "crashpad"
