@@ -7,6 +7,10 @@
       "name": "libpng",
       "version>=": "1.6.58#0"
     },
+    {
+      "name": "libdeflate",
+      "version>=": "1.25"
+    },
     "openexr",
     "asmjit",
     "crashpad"
