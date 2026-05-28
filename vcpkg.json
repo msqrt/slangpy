@@ -11,7 +11,10 @@
       "name": "libdeflate",
       "version>=": "1.25"
     },
-    "openexr",
+    {
+      "name": "openexr",
+      "version>=": "3.4.11"
+    },
     "asmjit",
     "crashpad"
   ],
