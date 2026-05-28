@@ -4,9 +4,7 @@
 
 #include "sgl/core/object.h"
 #include "sgl/math/vector_types.h"
-namespace sgl {
-    class Texture;
-}
+#include "sgl/device/resource.h"
 
 #include <imgui.h>
 
@@ -283,10 +281,7 @@ public:
         ScopedID id(this);
         ScopedDisable disable(!m_enabled);
 
-        if (m_texture)
-            ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
-        else
-            ImGui::Text("[Empty image]");
+        ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
     }
 
 private:
