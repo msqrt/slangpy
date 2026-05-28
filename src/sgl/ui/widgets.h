@@ -283,7 +283,7 @@ public:
 
         if (m_texture)
             ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
-        else:
+        else
             ImGui::Text("[Empty image]");
     }
 
