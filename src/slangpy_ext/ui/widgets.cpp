@@ -195,7 +195,7 @@ SGL_PY_EXPORT(ui_widgets)
         .def_prop_rw("text", &Text::text, &Text::set_text, D(Text, text));
 
     nb::class_<Image, Widget>(ui, "Image")
-        .def(nb::init<Widget*, sgl::Texture*>(), "parent"_a.none(), "texture"_a)
+        .def(nb::init<Widget*, sgl::Texture*>(), "parent"_a.none(), "texture"_a.none())
         .def_prop_rw("texture", &Image::texture, &Image::set_texture);
 
     nb::class_<ProgressBar, Widget>(ui, "ProgressBar", D(ProgressBar))
