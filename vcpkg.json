@@ -14,7 +14,7 @@
     "asmjit",
     "crashpad"
   ],
-  "builtin-baseline": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
+  "builtin-baseline": "d015e31e90838a4c9dfa3eed45979bc70d9357fc",
   "vcpkg-configuration": {
     "overlay-ports": [
       "./external/vcpkg-overlays"
