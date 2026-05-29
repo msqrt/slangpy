@@ -3,12 +3,16 @@
   "version-string": "0.42.0",
   "dependencies": [
     "libjpeg-turbo",
-    "libpng",
     {
-      "name": "openexr", "version>=": "3.3.5"
+      "name": "libpng",
+      "version>=": "1.6.58#0"
     },
-      "asmjit",
-      "crashpad"
+    {
+      "name": "openexr",
+      "version>=": "3.3.5"
+    },
+    "asmjit",
+    "crashpad"
   ],
   "builtin-baseline": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
   "vcpkg-configuration": {
