@@ -3,7 +3,14 @@
   "version-string": "0.42.0",
   "dependencies": [
     "libjpeg-turbo",
-    "libpng",
+    {
+      "name": "libpng",
+      "version>=": "1.6.58#0"
+    },
+    {
+      "name": "libdeflate",
+      "version>=": "1.25"
+    },
     {
       "name": "openexr",
       "version>=": "3.3.5"
@@ -11,7 +18,7 @@
     "asmjit",
     "crashpad"
   ],
-  "builtin-baseline": "6f29f12e82a8293156836ad81cc9bf5af41fe836",
+  "builtin-baseline": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
   "vcpkg-configuration": {
     "overlay-ports": [
       "./external/vcpkg-overlays"
