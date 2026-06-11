@@ -424,6 +424,7 @@ class CallData(NativeCallData):
         # Generate code.
         codegen = CodeGen()
         generate_code(context, build_info, bindings, codegen)
+
         # TODO: This is not technically needed anymore because in the case of
         # linking multiple modules, we already have composed the module to begin with.
         for link in build_info.module.link:
