@@ -55,6 +55,7 @@ target_sources(sgl PRIVATE
     core/plugin.h
     core/resolver.h
     core/short_vector.h
+    core/signature_buffer.h
     core/static_vector.h
     core/stream.h
     core/string.cpp
@@ -74,6 +75,7 @@ target_sources(sgl PRIVATE
     device/blit.slang
     device/buffer_cursor.cpp
     device/buffer_cursor.h
+    device/callback_list.h
     device/command.cpp
     device/command.h
     device/cuda_interop.cpp
