@@ -13986,6 +13986,10 @@ static const char *__doc_sgl_ui_Text_set_text = R"doc()doc";
 
 static const char *__doc_sgl_ui_Text_text = R"doc()doc";
 
+static const char *__doc_sgl_ui_Image_Image = R"doc()doc";
+
+static const char *__doc_sgl_ui_Image_texture = R"doc()doc";
+
 static const char *__doc_sgl_ui_ValueProperty = R"doc()doc";
 
 static const char *__doc_sgl_ui_ValueProperty_ValueProperty = R"doc()doc";
