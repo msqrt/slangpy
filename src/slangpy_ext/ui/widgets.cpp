@@ -129,6 +129,7 @@ SGL_PY_EXPORT(ui_widgets)
 {
     using namespace sgl;
     using namespace sgl::ui;
+    using sgl::ui::Window;
 
     nb::module_ ui = m.attr("ui");
 
