@@ -1,0 +1,10 @@
+--- a/util/file/filesystem.h	2024-04-11 20:31:35.000000000 +0300
++++ b/util/file/filesystem.h	2026-05-28 20:46:28.105822229 +0300
+@@ -16,6 +16,7 @@
+ #define CRASHPAD_UTIL_FILE_FILESYSTEM_H_
+
+ #include <time.h>
++#include <cstdint> // how did this ever work without this
+
+ #include "base/files/file_path.h"
+ #include "util/file/file_io.h"
