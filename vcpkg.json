@@ -1,16 +1,27 @@
 {
-    "name": "sgl",
-    "version-string": "0.41.0",
-    "dependencies": [
-        "libjpeg-turbo",
-        "libpng",
-        "openexr",
-        "asmjit",
-        "crashpad"
-    ],
-    "vcpkg-configuration": {
-        "overlay-ports": [
-            "./external/vcpkg-overlays"
-        ]
-    }
+  "name": "sgl",
+  "version-string": "0.42.0",
+  "dependencies": [
+    "libjpeg-turbo",
+    {
+      "name": "libpng",
+      "version>=": "1.6.58#0"
+    },
+    {
+      "name": "libdeflate",
+      "version>=": "1.25"
+    },
+    {
+      "name": "openexr",
+      "version>=": "3.3.5"
+    },
+    "asmjit",
+    "crashpad"
+  ],
+  "builtin-baseline": "b83a134447208c35f740e4b6faf1263b0d6e860e",
+  "vcpkg-configuration": {
+    "overlay-ports": [
+      "./external/vcpkg-overlays"
+    ]
+  }
 }

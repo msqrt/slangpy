@@ -103,6 +103,7 @@ class CMakeBuild(build_ext):
             f"-DCMAKE_INSTALL_DATAROOTDIR=.",
             "-DSGL_BUILD_EXAMPLES=OFF",
             "-DSGL_BUILD_TESTS=OFF",
+            "-DSGL_WARNINGS_AS_ERRORS=OFF",
         ]
 
         if BUILD_RELEASE_WHEEL:

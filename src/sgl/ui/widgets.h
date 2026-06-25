@@ -4,6 +4,7 @@
 
 #include "sgl/core/object.h"
 #include "sgl/math/vector_types.h"
+#include "sgl/device/resource.h"
 
 #include <imgui.h>
 
@@ -258,6 +259,36 @@ public:
 
 private:
     std::string m_label;
+};
+
+class Image : public Widget {
+    SGL_OBJECT(Image)
+public:
+    Image(Widget* parent, sgl::Texture* texture)
+        : Widget(parent)
+        , m_texture(texture)
+    {
+    }
+
+    const sgl::Texture* texture() const { return m_texture; }
+    void set_texture(sgl::Texture* texture) { m_texture = texture; }
+
+    virtual void render() override
+    {
+        if (!m_visible)
+            return;
+
+        ScopedID id(this);
+        ScopedDisable disable(!m_enabled);
+
+        if (m_texture)
+            ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
+        else
+            ImGui::Text("[Empty image]");
+    }
+
+private:
+    sgl::Texture* m_texture;
 };
 
 class Text : public Widget {
