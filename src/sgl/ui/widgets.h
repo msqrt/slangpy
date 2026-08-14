@@ -272,6 +272,12 @@ public:
 
     const sgl::Texture* texture() const { return m_texture; }
     void set_texture(sgl::Texture* texture) { m_texture = texture; }
+    bool clicked() const
+    {
+        bool result = m_clicked;
+        m_clicked = false;
+        return result;
+    }
 
     virtual void render() override
     {
@@ -282,13 +288,18 @@ public:
         ScopedDisable disable(!m_enabled);
 
         if (m_texture)
-            ImGui::Image((ImTextureID)(intptr_t)m_texture, ImVec2((float)m_texture->width(), (float)m_texture->height()));
+            ImGui::Image(
+                (ImTextureID)(intptr_t)m_texture,
+                ImVec2((float)m_texture->width(), (float)m_texture->height())
+            );
         else
             ImGui::Text("[Empty image]");
+        m_clicked |= ImGui::IsItemClicked(ImGuiMouseButton_Left);
     }
 
 private:
     sgl::Texture* m_texture;
+    bool m_clicked;
 };
 
 class Text : public Widget {
