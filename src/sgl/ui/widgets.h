@@ -267,13 +267,13 @@ public:
     Image(Widget* parent, sgl::Texture* texture)
         : Widget(parent)
         , m_texture(texture)
+        , m_clicked(false)
     {
     }
 
     const sgl::Texture* texture() const { return m_texture; }
     void set_texture(sgl::Texture* texture) { m_texture = texture; }
-    bool clicked() const
-    {
+    bool clicked() {
         bool result = m_clicked;
         m_clicked = false;
         return result;
