@@ -21,6 +21,7 @@ from slangpy import (
     SlangLinkOptions,
     NativeHandle,
     DeviceType,
+    PipelineCompilationPolicy,
     TypeConformance,
     is_torch_bridge_using_fallback,
     get_torch_bridge_fallback_reason,
@@ -511,8 +512,8 @@ class CallData(NativeCallData):
             opts = SlangLinkOptions()
             opts.dump_intermediates = _DUMP_SLANG_INTERMEDIATES
             opts.dump_intermediates_prefix = sanitized
-            defer_target_compilation = bool(
-                build_info.options.get("defer_target_compilation", True)
+            compilation_policy = build_info.options.get(
+                "pipeline_compilation_policy", PipelineCompilationPolicy.deferred
             )
             if build_info.pipeline_type == PipelineType.compute:
                 # Create compute pipeline
@@ -524,7 +525,7 @@ class CallData(NativeCallData):
                 )
                 self.pipeline = device.create_compute_pipeline(
                     program,
-                    defer_target_compilation=defer_target_compilation,
+                    compilation_policy=compilation_policy,
                     label=f"{build_info.module.name}_{build_info.name}_compute_call",
                 )
                 build_info.module.pipeline_cache[hash] = self.pipeline
@@ -572,7 +573,7 @@ class CallData(NativeCallData):
                     max_ray_payload_size=build_info.ray_tracing_max_ray_payload_size,
                     max_attribute_size=build_info.ray_tracing_max_attribute_size,
                     flags=build_info.ray_tracing_flags,
-                    defer_target_compilation=defer_target_compilation,
+                    compilation_policy=compilation_policy,
                     label=f"{build_info.module.name}_{build_info.name}_rt_call",
                 )
                 build_info.module.pipeline_cache[hash] = self.pipeline
