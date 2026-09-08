@@ -267,16 +267,14 @@ public:
     Image(Widget* parent, sgl::Texture* texture)
         : Widget(parent)
         , m_texture(texture)
-        , m_clicked(false)
+        , m_hovered(false)
     {
     }
 
     const sgl::Texture* texture() const { return m_texture; }
     void set_texture(sgl::Texture* texture) { m_texture = texture; }
-    bool clicked() {
-        bool result = m_clicked;
-        m_clicked = false;
-        return result;
+    bool hovered() const {
+        return m_hovered;
     }
 
     virtual void render() override
@@ -292,7 +290,7 @@ public:
                 (ImTextureID)(intptr_t)m_texture,
                 ImVec2((float)m_texture->width(), (float)m_texture->height())
             );
-            m_clicked |= ImGui::IsItemClicked(ImGuiMouseButton_Left);
+            m_hovered = ImGui::IsItemHovered();
         }
         else
             ImGui::Text("[Empty image]");
@@ -300,7 +298,7 @@ public:
 
 private:
     sgl::Texture* m_texture;
-    bool m_clicked;
+    bool m_hovered;
 };
 
 class Text : public Widget {

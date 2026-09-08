@@ -197,7 +197,7 @@ SGL_PY_EXPORT(ui_widgets)
     nb::class_<Image, Widget>(ui, "Image")
         .def(nb::init<Widget*, sgl::Texture*>(), "parent"_a.none(), "texture"_a.none() = nullptr, D(Image, Image))
         .def_prop_rw("texture", &Image::texture, &Image::set_texture, D(Image, texture))
-        .def_prop_ro("clicked", &Image::clicked);
+        .def_prop_ro("hovered", &Image::hovered);
 
     nb::class_<ProgressBar, Widget>(ui, "ProgressBar", D(ProgressBar))
         .def(nb::init<Widget*, float>(), "parent"_a.none(), "fraction"_a = 0.f, D(ProgressBar, ProgressBar))
