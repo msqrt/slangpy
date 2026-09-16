@@ -271,8 +271,8 @@ public:
     {
     }
 
-    const sgl::Texture* texture() const { return m_texture; }
-    void set_texture(sgl::Texture* texture) { m_texture = texture; }
+    const sgl::Texture* texture() const { return m_texture.get(); }
+    void set_texture(sgl::Texture* texture) { m_texture.reset(texture); }
     bool hovered() const {
         return m_hovered;
     }
@@ -287,7 +287,7 @@ public:
 
         if (m_texture) {
             ImGui::Image(
-                (ImTextureID)(intptr_t)m_texture,
+                (ImTextureID)(intptr_t)m_texture.get(),
                 ImVec2((float)m_texture->width(), (float)m_texture->height())
             );
             m_hovered = ImGui::IsItemHovered();
@@ -297,7 +297,7 @@ public:
     }
 
 private:
-    sgl::Texture* m_texture;
+    ref<sgl::Texture> m_texture;
     bool m_hovered;
 };
 
