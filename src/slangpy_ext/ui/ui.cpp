@@ -219,7 +219,7 @@ SGL_PY_EXPORT(ui)
     );
 
     nb::class_<ui::Context, Object>(ui, "Context", gc_helper_type_slots<ui::Context>(), D(Context))
-        .def(nb::init<ref<Device>>(), "device"_a)
+        .def(nb::init<ref<Device>, bool>(), "device"_a, "dockable"_a)
         .def(
             "begin_frame",
             &ui::Context::begin_frame,

@@ -219,8 +219,8 @@ private:
     std::string m_title;
     float2 m_position;
     float2 m_size;
-    bool m_set_position{true};
-    bool m_set_size{true};
+    bool m_set_position{false};
+    bool m_set_size{false};
 };
 
 class Group : public Widget {
@@ -268,6 +268,7 @@ public:
         : Widget(parent)
         , m_texture(texture)
         , m_hovered(false)
+        , m_last_visible_frame(0)
     {
     }
 
@@ -275,6 +276,12 @@ public:
     void set_texture(sgl::Texture* texture) { m_texture.reset(texture); }
     bool hovered() const {
         return m_hovered;
+    }
+    bool is_visible() const {
+        return m_last_visible_frame == ImGui::GetFrameCount();
+    }
+    uint2 position() const {
+        return m_position;
     }
 
     virtual void render() override
@@ -291,14 +298,20 @@ public:
                 ImVec2((float)m_texture->width(), (float)m_texture->height())
             );
             m_hovered = ImGui::IsItemHovered();
+            auto x = ImGui::GetItemRectMin();
+            m_position = uint2(x[0], x[1]);
         }
         else
             ImGui::Text("[Empty image]");
+        if (ImGui::IsItemVisible())
+            m_last_visible_frame = ImGui::GetFrameCount();
     }
 
 private:
     ref<sgl::Texture> m_texture;
     bool m_hovered;
+    uint64_t m_last_visible_frame;
+    uint2 m_position;
 };
 
 class Text : public Widget {

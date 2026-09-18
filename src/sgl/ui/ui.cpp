@@ -287,8 +287,8 @@ static std::string utf32_to_utf8(uint32_t utf32)
     return utf8;
 }
 
-Context::Context(ref<Device> device)
-    : m_device(std::move(device))
+Context::Context(ref<Device> device, bool dockable)
+    : m_device(std::move(device)), m_dockable(dockable)
 {
     m_imgui_context = ImGui::CreateContext();
     ImGui::SetCurrentContext(m_imgui_context);
@@ -299,7 +299,7 @@ Context::Context(ref<Device> device)
     io.UserData = this;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable;
     io.BackendFlags |= ImGuiBackendFlags_RendererHasTextures;
-    io.IniFilename = nullptr;
+    io.IniFilename = "imgui_layout.ini";
     io.ConfigNavCaptureKeyboard = false;
 
     float scale_factor = platform::display_scale_factor();
@@ -389,6 +389,9 @@ void Context::begin_frame(uint32_t width, uint32_t height, sgl::Window* window)
         update_mouse_cursor(window);
 
     ImGui::NewFrame();
+
+    if (m_dockable)
+        ImGui::DockSpaceOverViewport();
 
     m_screen->render();
 }

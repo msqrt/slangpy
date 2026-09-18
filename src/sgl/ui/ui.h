@@ -25,7 +25,7 @@ namespace sgl::ui {
 class SGL_API Context : public Object {
     SGL_OBJECT(Context)
 public:
-    Context(ref<Device> device);
+    Context(ref<Device> device, bool dockable = false);
     ~Context();
 
     /// The main screen widget.
@@ -110,6 +110,8 @@ private:
     ImGuiContext* m_imgui_context;
 
     ref<Screen> m_screen;
+
+    bool m_dockable;
 
     uint32_t m_frame_index{0};
     Timer m_frame_timer;
