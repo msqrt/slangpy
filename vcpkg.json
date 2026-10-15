@@ -15,8 +15,7 @@
             "name": "openexr",
             "version>=": "3.3.5"
         },
-        "asmjit",
-        "crashpad"
+        "asmjit"
     ],
     "builtin-baseline": "b83a134447208c35f740e4b6faf1263b0d6e860e",
     "vcpkg-configuration": {
