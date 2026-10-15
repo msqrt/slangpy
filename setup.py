@@ -82,6 +82,19 @@ class CMakeBuild(build_ext):
 
             env = msvc.msvc14_get_vc_env(MSVC_PLAT_SPEC)
 
+        vcpkg_dir = SOURCE_DIR / "external" / "vcpkg"
+        
+        if subprocess.run(
+                ["git", "-C", os.fspath(vcpkg_dir), "rev-parse", "--is-shallow-repository"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip() == "true":
+            subprocess.run(
+                ["git", "-C", os.fspath(vcpkg_dir), "fetch", "--unshallow", "origin"],
+                check=True,
+            )
+
         build_dir = str(SOURCE_DIR / "build/pip")
 
         # Wipe out the build directory if it exists
